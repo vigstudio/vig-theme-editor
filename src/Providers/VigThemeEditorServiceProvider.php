@@ -20,16 +20,9 @@ class VigThemeEditorServiceProvider extends ServiceProvider
     {
         $this
             ->loadAndPublishConfigurations(['permissions'])
-            ->loadMigrations()
             ->loadAndPublishTranslations()
             ->loadAndPublishViews()
             ->loadRoutes();
-
-        if (defined('LANGUAGE_ADVANCED_MODULE_SCREEN_NAME')) {
-            \Botble\LanguageAdvanced\Supports\LanguageAdvancedManager::registerModule(VigThemeEditor::class, [
-                'name',
-            ]);
-        }
 
         Event::listen(RouteMatched::class, function () {
             dashboard_menu()
