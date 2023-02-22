@@ -3,8 +3,8 @@
     "name": "VigThemeEditor",
     "namespace": "VigStudio\\VigThemeEditor\\",
     "provider": "VigStudio\\VigThemeEditor\\Providers\\VigThemeEditorServiceProvider",
-    "author": "N/A",
-    "url": "N/A",
-    "version": "1.0",
+    "author": "Nghĩa Nè",
+    "url": "https://nghiane.com",
+    "version": "0.0.3",
     "description": "The description for module vig_theme_editor"
 }
