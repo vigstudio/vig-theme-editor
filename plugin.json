@@ -1,5 +1,5 @@
 {
-    "id": "botble/vig-theme-editor",
+    "id": "vigstudio/vig-theme-editor",
     "name": "VigThemeEditor",
     "namespace": "VigStudio\\VigThemeEditor\\",
     "provider": "VigStudio\\VigThemeEditor\\Providers\\VigThemeEditorServiceProvider",
