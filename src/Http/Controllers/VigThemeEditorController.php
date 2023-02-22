@@ -5,6 +5,8 @@ namespace VigStudio\VigThemeEditor\Http\Controllers;
 use Botble\Base\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use Botble\Theme\Facades\ThemeFacade;
+use Illuminate\Filesystem\Filesystem;
+use Botble\Base\Http\Responses\BaseHttpResponse;
 
 class VigThemeEditorController extends BaseController
 {
@@ -24,13 +26,24 @@ class VigThemeEditorController extends BaseController
         return view('plugins/vig-theme-editor::editor', compact('folders', 'content'));
     }
 
-    public function putFileContent(int $id, Request $request)
+    public function putFileContent(int $id, Request $request, BaseHttpResponse $response)
     {
+        $request->validate([
+            'content' => 'required|nullable',
+        ]);
+
         $folders = $this->getFiles();
         $file = $this->arraySearch($id, $folders, 'id');
+
+        $fileSystem = new Filesystem();
+
+        if (! $fileSystem->isWritable($file['path'])) {
+            return $response->setMessage(trans('plugins/vig-theme-editor::vig-theme-editor.error'));
+        }
+
         file_put_contents($file['path'], $request->input('content'));
 
-        return back();
+        return $response->setMessage(trans('plugins/vig-theme-editor::vig-theme-editor.success'));
     }
 
     protected function getContent(int $id, array $folders)
