@@ -23,11 +23,19 @@ class VigThemeEditorController extends BaseController
             $content = '';
         }
 
-        return view('plugins/vig-theme-editor::editor', compact('folders', 'content'));
+        if (config('plugins.vig-theme-editor.general.enable')) {
+            return view('plugins/vig-theme-editor::editor', compact('folders', 'content'));
+        }
+
+        return view('plugins/vig-theme-editor::enable');
     }
 
     public function putFileContent(int $id, Request $request, BaseHttpResponse $response)
     {
+        if (! config('plugins.vig-theme-editor.general.enable')) {
+            return $response->setMessage(trans('plugins/vig-theme-editor::vig-theme-editor.enable_description'));
+        }
+
         $request->validate([
             'content' => 'required|nullable',
         ]);

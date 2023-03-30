@@ -19,7 +19,7 @@ class VigThemeEditorServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this
-            ->loadAndPublishConfigurations(['permissions'])
+            ->loadAndPublishConfigurations(['permissions', 'general'])
             ->loadAndPublishTranslations()
             ->loadAndPublishViews()
             ->loadRoutes();
