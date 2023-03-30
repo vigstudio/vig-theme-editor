@@ -6,11 +6,13 @@ Route::group(['namespace' => 'VigStudio\VigThemeEditor\Http\Controllers', 'middl
             Route::get('/', [
                 'as' => 'index',
                 'uses' => 'VigThemeEditorController@index',
+                'permission' => 'vig-theme-editor',
             ]);
 
             Route::post('put-content/{id}', [
                 'as' => 'put',
                 'uses' => 'VigThemeEditorController@putFileContent',
+                'permission' => 'vig-theme-editor',
             ]);
         });
     });
