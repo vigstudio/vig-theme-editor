@@ -4,7 +4,7 @@ namespace VigStudio\VigThemeEditor\Http\Controllers;
 
 use Botble\Base\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
-use Botble\Theme\Facades\ThemeFacade;
+use Theme;
 use Illuminate\Filesystem\Filesystem;
 use Botble\Base\Http\Responses\BaseHttpResponse;
 
@@ -82,7 +82,7 @@ class VigThemeEditorController extends BaseController
 
     protected function getFiles(): array
     {
-        $path = platform_path() . ThemeFacade::path();
+        $path = platform_path() . Theme::path();
 
         $folderAllows = [
             'views',
