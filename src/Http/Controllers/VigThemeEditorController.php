@@ -82,7 +82,7 @@ class VigThemeEditorController extends BaseController
 
     protected function getFiles(): array
     {
-        $path = platform_path() . Theme::path();
+        $path = platform_path(Theme::path());
 
         $folderAllows = [
             'views',
